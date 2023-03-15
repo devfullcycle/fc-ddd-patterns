@@ -1,3 +1,4 @@
+import { or } from "sequelize";
 import { Sequelize } from "sequelize-typescript";
 import Order from "../../../../domain/checkout/entity/order";
 import OrderItem from "../../../../domain/checkout/entity/order_item";
@@ -80,5 +81,94 @@ describe("Order repository test", () => {
         },
       ],
     });
+  });
+
+  it("should get an order when it exists in database", async () => {
+    const customerRepository = new CustomerRepository();
+    const customer = new Customer("1234", "Customer 1");
+    const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
+    customer.changeAddress(address);
+    await customerRepository.create(customer);
+
+    const productRepository = new ProductRepository();
+    const product = new Product("12", "Product 1", 10);
+    await productRepository.create(product);
+
+    const orderItem = new OrderItem(
+      "1",
+      product.name,
+      product.price,
+      product.id,
+      2
+    );
+
+    const order = new Order("123", "1234", [orderItem]);
+
+    const orderRepository = new OrderRepository();
+    await orderRepository.create(order);
+
+    const orderResult = await orderRepository.find("123");
+    expect(order).toStrictEqual(orderResult);
+  });
+
+  it("should get all orders in database", async () => {
+    const customerRepository = new CustomerRepository();
+    const customer = new Customer("1234", "Customer 1");
+    const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
+    customer.changeAddress(address);
+    await customerRepository.create(customer);
+
+    const productRepository = new ProductRepository();
+    const product = new Product("12", "Product 1", 10);
+    await productRepository.create(product);
+
+    const orderItem = new OrderItem(
+      "1",
+      product.name,
+      product.price,
+      product.id,
+      2
+    );
+
+    const order = new Order("123", "1234", [orderItem]);
+
+    const orderRepository = new OrderRepository();
+    await orderRepository.create(order);
+
+    const orderResult = await orderRepository.findAll();
+    expect([order]).toStrictEqual(orderResult);
+  });
+
+  it("should update an order", async () => {
+    const customerRepository = new CustomerRepository();
+    const customer = new Customer("1234", "Customer 1");
+    const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
+    customer.changeAddress(address);
+    await customerRepository.create(customer);
+
+    const productRepository = new ProductRepository();
+    const product = new Product("12", "Product 1", 10);
+    await productRepository.create(product);
+
+    const orderItem = new OrderItem(
+      "1",
+      product.name,
+      product.price,
+      product.id,
+      2
+    );
+
+    const order = new Order("123", "1234", [orderItem]);
+
+    const orderRepository = new OrderRepository();
+    await orderRepository.create(order);
+
+
+    order.items = [new OrderItem("1", product.name, product.price, product.id, 3)];
+
+    await orderRepository.update(order);
+
+    const orderResult = await orderRepository.find("123");
+    expect(order).toStrictEqual(orderResult);
   });
 });
