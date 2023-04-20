@@ -66,7 +66,7 @@ export default class OrderRepository {
     return order;
   }
   async findAll(): Promise<Order[]> {
-    const orderModels = await OrderModel.findAll();
+    const orderModels = await OrderModel.findAll({include : [{ model: OrderItemModel }]});
     return orderModels.map((orderModel) =>
       new Order(orderModel.id, orderModel.customer_id, orderModel.items.map((orderItem) => {
         return new OrderItem(orderItem.id, orderItem.name, orderItem.price, orderItem.product_id, orderItem.quantity)

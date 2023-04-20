@@ -253,35 +253,8 @@ it("should find all orders", async () => {
   await orderRepository.create(order2);     
   const orderModel = await orderRepository.findAll()
         
-  expect(orderModel[0]).toStrictEqual({
-          id: "123",
-          customer_id: "123",
-          total: order.total(),
-    items: [
-        {
-          id: orderItem.id,
-          name: orderItem.name,
-          price: orderItem.price,
-          quantity: orderItem.quantity,
-          order_id: "123",
-          product_id: product.id,
-        },
-      ],
-    });
-  expect(orderModel[1]).toStrictEqual({
-          id: "1234",
-          customer_id: "1234",
-          total: order2.total(),
-    items: [
-        {
-          id: orderItem2.id,
-          name: orderItem2.name,
-          price: orderItem2.price,
-          quantity: orderItem2.quantity,
-          order_id: "1234",
-          product_id: product2.id,
-        },
-      ],
-    });
+    expect(orderModel).toHaveLength(2);
+    expect(orderModel).toContainEqual(order);
+    expect(orderModel).toContainEqual(order2);
 })
 });
