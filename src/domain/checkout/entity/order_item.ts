@@ -1,3 +1,5 @@
+import Product from "../../product/entity/product";
+
 export default class OrderItem {
   private _id: string;
   private _productId: string;
@@ -39,6 +41,16 @@ export default class OrderItem {
 
   get price(): number {
     return this._price;
+  }
+
+  
+  changeQuantity(quantity : number): void {
+    this._quantity = quantity
+  }
+  changeProduct(product: Product) : void{
+    this._productId = product.id
+    this._price = product.price
+    this._name = product.name
   }
 
   total(): number {
