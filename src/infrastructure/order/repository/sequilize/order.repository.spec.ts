@@ -35,7 +35,6 @@ describe("Order repository test", () => {
   afterEach(async () => {
     await sequelize.close();
   });
-
   it("should create a new order", async () => {
     const customerRepository = new CustomerRepository();
     const customer = new Customer("123", "Customer 1");
@@ -81,4 +80,58 @@ describe("Order repository test", () => {
       ],
     });
   });
+  it('should find a order', async () => {
+    const customerRepository = new CustomerRepository();
+    const customer = new Customer('1', 'Customer 1');
+    const address = new Address('Street 1', 1, 'Zipcode 1', 'City 1');
+    customer.changeAddress(address);
+    await customerRepository.create(customer);
+
+    const productRepository = new ProductRepository();
+    const product = new Product('1', 'Product 1', 10);
+    await productRepository.create(product);
+
+    const orderItem = new OrderItem('1', product.name, product.price, product.id, 2);
+    const order = new Order('123', '1', [orderItem])
+
+    const orderRepository = new OrderRepository();
+    await orderRepository.create(order);
+
+    const orderModel = await OrderModel.findOne({ 
+      where: { id: order.id },
+      include: ['items']
+    })
+
+    const findOrder = await orderRepository.findById('123');
+
+    expect(orderModel?.toJSON()).toEqual({
+      id: findOrder.id,
+      customer_id: findOrder.customerId,
+      items: [
+        {
+          id: findOrder.items[0].id,
+          name: findOrder.items[0]?.name,
+          order_id: findOrder.id,
+          price: findOrder.items[0]?.price,
+          product_id: findOrder.items[0]?.productId,
+          quantity: findOrder.items[0]?.quantity
+        }
+      ],
+      total: findOrder.total()
+    })
+  });
+  it('should find all products', async () => {
+    const productRepository = new ProductRepository();
+    const product = new Product('1', 'Product 1', 100);
+    await productRepository.create(product);
+
+    const product2 = new Product('2', 'Product 2', 200);
+    await productRepository.create(product2);
+
+    const foundProducts = await productRepository.findAll();
+    const products = [product, product2]
+
+    expect(products).toEqual(foundProducts)
+  });
+
 });
