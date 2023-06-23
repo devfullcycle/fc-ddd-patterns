@@ -1,7 +1,6 @@
 import Order from "../../../../domain/checkout/entity/order";
 import OrderItem from "../../../../domain/checkout/entity/order_item";
 import OrderRepositoryInterface from "../../../../domain/checkout/repository/order-repository.interface";
-import customerModel from "../../../customer/repository/sequelize/customer.model";
 import OrderItemModel from "./order-item.model";
 import OrderModel from "./order.model";
 
@@ -25,7 +24,6 @@ export default class OrderRepository implements OrderRepositoryInterface {
       }
     );
   }
-
   async update(entity: Order): Promise<void> {
     await OrderModel.update(
       {
