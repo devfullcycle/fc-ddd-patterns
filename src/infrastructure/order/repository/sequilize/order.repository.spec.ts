@@ -11,6 +11,7 @@ import ProductRepository from "../../../product/repository/sequelize/product.rep
 import OrderItemModel from "./order-item.model";
 import OrderModel from "./order.model";
 import OrderRepository from "./order.repository";
+import orderModel from "./order.model";
 
 describe("Order repository test", () => {
   let sequelize: Sequelize;
@@ -102,7 +103,7 @@ describe("Order repository test", () => {
       include: ['items']
     })
 
-    const findOrder = await orderRepository.findById('123');
+    const findOrder = await orderRepository.find('123');
 
     expect(orderModel?.toJSON()).toEqual({
       id: findOrder.id,
@@ -133,5 +134,60 @@ describe("Order repository test", () => {
 
     expect(products).toEqual(foundProducts)
   });
+  it("Should find and update a order",async () => {
+        
+    const customerRepository = new CustomerRepository();
+    const customer = new Customer("123", "Customer1");
+    const adrress = new Address("Street 1", 1, "Zipcode 1", "City 1");
+    customer.changeAddress(adrress);
+    await customerRepository.create(customer);
 
+    const productRepository = new ProductRepository();
+    const product = new Product("123", "Product 1", 2);
+    await productRepository.create(product);
+
+    const orderItem = new OrderItem(
+        "1",
+        product.name,
+        product.price,
+        product.id,
+        2            
+    );
+
+    const order = new Order("123", customer.id, [orderItem])
+    const orderRepository = new OrderRepository();
+    await orderRepository.create(order);
+
+    await OrderModel.findOne({
+        where: {id: order.id},
+        include: ["items"],
+    });
+
+    const orderItemUpdate = new OrderItem("1", "Product 1", 2, "123", 2);
+    const orderUpdate = new Order("123", "123", [orderItemUpdate]);
+
+    await orderRepository.update(orderUpdate);
+
+    const orderUpdateModel = await OrderModel.findOne({
+        where: {id: orderUpdate.id},
+        include: ["items"],
+    });
+
+
+    expect(orderUpdateModel.toJSON()).toStrictEqual({
+        customer_id: customer.id,           
+        id: "123",
+        items: [
+          {
+            id: orderItemUpdate.id,
+            name: orderItemUpdate.name,
+            order_id: "123",
+            price: orderItemUpdate.price,
+            product_id: "123",
+            quantity: orderItemUpdate.quantity,               
+         
+          }],
+        total: orderUpdate.total(),
+    });
+  })
 });
