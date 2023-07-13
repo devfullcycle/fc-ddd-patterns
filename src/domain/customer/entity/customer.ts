@@ -1,6 +1,6 @@
 import Address from "../value-object/address";
 
-export default class Customer {
+export default class Customer extends AggregateRoot {
   private _id: string;
   private _name: string = "";
   private _address!: Address;
@@ -11,6 +11,11 @@ export default class Customer {
     this._id = id;
     this._name = name;
     this.validate();
+  }
+
+  static create(id: string, name: string) {
+    const customer = new Customer(id, name);
+    customer.addEvent(new CustomerCreated(id, name));
   }
 
   get id(): string {
@@ -37,12 +42,13 @@ export default class Customer {
   changeName(name: string) {
     this._name = name;
     this.validate();
+    this.addEvent(new CustomerNameChanged(this.id, name));
   }
 
   get Address(): Address {
     return this._address;
   }
-  
+
   changeAddress(address: Address) {
     this._address = address;
   }
