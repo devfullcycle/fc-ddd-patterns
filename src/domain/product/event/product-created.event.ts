@@ -1,4 +1,3 @@
-import EventHandlerInterface from "../../@shared/event/event-handler.interface";
 import EventInterface from "../../@shared/event/event.interface";
 
 export default class ProductCreatedEvent implements EventInterface {

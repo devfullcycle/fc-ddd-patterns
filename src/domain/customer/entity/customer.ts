@@ -1,3 +1,6 @@
+import EventDispatcher from "../../@shared/event/event-dispatcher";
+import CustomerCreatedEvent from "../event/customer-created.event";
+import { EnviaConsoleLogHandler } from "../event/handler/enviar-console-log.handler";
 import Address from "../value-object/address";
 
 export default class Customer {
@@ -45,6 +48,17 @@ export default class Customer {
   
   changeAddress(address: Address) {
     this._address = address;
+    if(!address) return;
+    const eventDispatcher = new EventDispatcher();
+    const eventHandler = new EnviaConsoleLogHandler();  
+    eventDispatcher.register("CustomerCreatedEvent",eventHandler);
+    const customerCreatedEvent = new CustomerCreatedEvent({
+      id: this._id,
+      name: this.name,
+      Address: this.Address
+    } as Customer);    
+    eventDispatcher.notify(customerCreatedEvent);  
+
   }
 
   isActive(): boolean {

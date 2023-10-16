@@ -1,6 +1,8 @@
 import EventDispatcher from "../../@shared/event/event-dispatcher";
 import Customer from "../entity/customer";
+import Address from "../value-object/address";
 import CustomerCreatedEvent from "./customer-created.event";
+import { EnviaConsoleLogHandler } from "./handler/enviar-console-log.handler";
 import { EnviaConsoleLog1Handler } from "./handler/enviar-console-log1.handler";
 import { EnviaConsoleLog2Handler } from "./handler/enviar-console-log2.handler";
 
@@ -23,6 +25,5 @@ describe("Customer Domain events tests", () => {
         eventDispatcher.notify(customerCreatedEvent);
         expect(spyEventHandler).toBeCalled();
         expect(spyEventHandler2).toBeCalled();
-    })
-
+    });
 });
