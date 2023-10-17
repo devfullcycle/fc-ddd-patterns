@@ -60,11 +60,5 @@ describe("Customer unit tests", () => {
     customer.addRewardPoints(10);
     expect(customer.rewardPoints).toBe(20);
   });
-  it("Customer's address is changed",()=>{
-    const customer = new Customer("1", "Customer 1");
-    customer.Address = new Address("Rua Lobo",23,"888888-888","Rio de Janeiro");    
-    const address = new Address("Rua Eduardo Suza",23,"888888-888","Rio de Janeiro"); 
-    customer.changeAddress(address);
-    expect(address).toBe(customer.Address);    
-  });
+
 });

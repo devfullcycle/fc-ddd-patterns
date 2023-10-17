@@ -9,6 +9,7 @@ export default class Customer {
   private _address!: Address;
   private _active: boolean = false;
   private _rewardPoints: number = 0;
+  private _oldAddress!: Address;
 
   constructor(id: string, name: string) {
     this._id = id;
@@ -46,19 +47,13 @@ export default class Customer {
     return this._address;
   }
   
-  changeAddress(address: Address) {
-    this._address = address;
-    if(!address) return;
-    const eventDispatcher = new EventDispatcher();
-    const eventHandler = new EnviaConsoleLogHandler();  
-    eventDispatcher.register("CustomerCreatedEvent",eventHandler);
-    const customerCreatedEvent = new CustomerCreatedEvent({
-      id: this._id,
-      name: this.name,
-      Address: this.Address
-    } as Customer);    
-    eventDispatcher.notify(customerCreatedEvent);  
+  get OldAddress(): Address {
+    return this._oldAddress;
+  }
 
+  changeAddress(address: Address) {
+    this._oldAddress = this._address;
+    this._address = address;
   }
 
   isActive(): boolean {
@@ -81,6 +76,7 @@ export default class Customer {
   }
 
   set Address(address: Address) {
+    this._oldAddress = this._address;
     this._address = address;
   }
 }
