@@ -1,4 +1,5 @@
-import RepositoryInterface from "../../@shared/repository/repository-interface";
-import Order from "../entity/order";
+import { RepositoryInterface } from "@/domain/@shared/repository";
+import { Order } from "@/domain/checkout/entity";
 
-export default interface OrderRepositoryInterface extends RepositoryInterface<Order> {}
+export default interface OrderRepositoryInterface
+  extends RepositoryInterface<Order> {}

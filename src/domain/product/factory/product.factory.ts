@@ -1,11 +1,11 @@
-import Product from "../entity/product";
-import ProductInterface from "../entity/product.interface";
 import { v4 as uuid } from "uuid";
-import ProductB from "../entity/product-b";
+import { Product } from "@/domain/product/entity";
+import { ProductInterface } from "@/domain/product/entity";
+import { ProductB } from "@/domain/product/entity";
 
 export default class ProductFactory {
   public static create(
-    type: string,
+    type: "a" | "b" | "c",
     name: string,
     price: number
   ): ProductInterface {

@@ -1,7 +1,6 @@
-import Customer from "../../customer/entity/customer";
-import Order from "../entity/order";
-import OrderItem from "../entity/order_item";
-import OrderService from "./order.service";
+import { Customer } from "@/domain/customer/entity";
+import { Order, OrderItem } from "@/domain/checkout/entity";
+import { OrderService } from ".";
 describe("Order service unit tets", () => {
   it("should place an order", () => {
     const customer = new Customer("c1", "Customer 1");

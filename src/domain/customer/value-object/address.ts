@@ -28,7 +28,7 @@ export default class Address {
   get city(): string {
     return this._city;
   }
-  
+
   validate() {
     if (this._street.length === 0) {
       throw new Error("Street is required");

@@ -1,4 +1,4 @@
-import Address from "../value-object/address";
+import { Address } from "@/domain/customer/value-object";
 
 export default class Customer {
   private _id: string;
@@ -42,7 +42,7 @@ export default class Customer {
   get Address(): Address {
     return this._address;
   }
-  
+
   changeAddress(address: Address) {
     this._address = address;
   }

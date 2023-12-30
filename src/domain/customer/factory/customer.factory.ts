@@ -1,6 +1,6 @@
-import Customer from "../entity/customer";
 import { v4 as uuid } from "uuid";
-import Address from "../value-object/address";
+import { Address } from "@/domain/customer/value-object";
+import { Customer } from "@/domain/customer/entity";
 
 export default class CustomerFactory {
   public static create(name: string): Customer {

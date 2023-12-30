@@ -1,5 +1,5 @@
 import { v4 as uuid } from "uuid";
-import OrderFactory from "./order.factory";
+import { OrderFactory } from ".";
 
 describe("Order factory unit test", () => {
   it("should create an order", () => {
