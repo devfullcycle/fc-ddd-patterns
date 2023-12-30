@@ -1,6 +1,5 @@
-import Order from "../../../../domain/checkout/entity/order";
-import OrderItemModel from "./order-item.model";
-import OrderModel from "./order.model";
+import { Order } from "@/domain/checkout/entity";
+import { OrderItemModel, OrderModel } from ".";
 
 export default class OrderRepository {
   async create(entity: Order): Promise<void> {

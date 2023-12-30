@@ -1,5 +1,5 @@
-import Address from "../value-object/address";
-import Customer from "./customer";
+import { Address } from "@/domain/customer/value-object";
+import { Customer } from ".";
 
 describe("Customer unit tests", () => {
   it("should throw error when id is empty", () => {

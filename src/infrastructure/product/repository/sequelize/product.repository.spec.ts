@@ -1,7 +1,6 @@
 import { Sequelize } from "sequelize-typescript";
-import Product from "../../../../domain/product/entity/product";
-import ProductModel from "./product.model";
-import ProductRepository from "./product.repository";
+import { Product } from "@/domain/product/entity";
+import { ProductModel, ProductRepository } from ".";
 
 describe("Product repository test", () => {
   let sequileze: Sequelize;
@@ -92,7 +91,6 @@ describe("Product repository test", () => {
     const foundProducts = await productRepository.findAll();
     const products = [product, product2];
 
-    expect(products).toEqual(foundProducts);    
+    expect(products).toEqual(foundProducts);
   });
-  
 });

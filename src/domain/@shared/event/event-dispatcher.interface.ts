@@ -1,5 +1,4 @@
-import EventHandlerInterface from "./event-handler.interface";
-import EventInterface from "./event.interface";
+import { EventHandlerInterface, EventInterface } from ".";
 
 export default interface EventDispatcherInterface {
   notify(event: EventInterface): void;

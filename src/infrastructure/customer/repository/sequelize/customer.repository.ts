@@ -1,7 +1,7 @@
-import Customer from "../../../../domain/customer/entity/customer";
-import Address from "../../../../domain/customer/value-object/address";
-import CustomerRepositoryInterface from "../../../../domain/customer/repository/customer-repository.interface";
-import CustomerModel from "./customer.model";
+import { Customer } from "@/domain/customer/entity";
+import { Address } from "@/domain/customer/value-object";
+import { CustomerRepositoryInterface } from "@/domain/customer/repository";
+import { CustomerModel } from ".";
 
 export default class CustomerRepository implements CustomerRepositoryInterface {
   async create(entity: Customer): Promise<void> {

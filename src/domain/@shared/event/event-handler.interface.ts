@@ -1,4 +1,4 @@
-import EventInterface from './event.interface';
+import { EventInterface } from ".";
 export default interface EventHandlerInterface<T extends EventInterface=EventInterface> {
     handle(event: T): void;
 }
