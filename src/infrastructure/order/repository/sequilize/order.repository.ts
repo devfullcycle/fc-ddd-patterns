@@ -3,16 +3,6 @@ import OrderItem from "../../../../domain/checkout/entity/order_item";
 import OrderItemModel from "./order-item.model";
 import OrderModel from "./order.model";
 
-function orderItemToDatabase(orderItem: OrderItem) {
-	return {
-		id: orderItem.id,
-    name: orderItem.name,
-    price: orderItem.price,
-		productId: orderItem.productId,
-		quantity: orderItem.quantity,
-	};
-}
-
 function orderItemModelToOrderItem(orderItemModel: OrderItemModel) {
 	return new OrderItem(orderItemModel.id, orderItemModel.name, orderItemModel.price, orderItemModel.product_id, orderItemModel.quantity);
 }
