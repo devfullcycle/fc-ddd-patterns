@@ -26,10 +26,10 @@ export default class Order {
   }
 
   addItem(item: OrderItem) {
-		this.validate();
-		this._items.push(item);
+     item.validate();
+     this._items.push(item);
+   
 	}
-
 
   validate(): boolean {
     if (this._id.length === 0) {
