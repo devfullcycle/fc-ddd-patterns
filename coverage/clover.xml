@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1708016742890" clover="3.2.0">
+  <project timestamp="1708016742891" name="All files">
+    <metrics statements="176" coveredstatements="110" conditionals="21" coveredconditionals="3" methods="69" coveredmethods="47" elements="266" coveredelements="160" complexity="0" loc="176" ncloc="176" packages="7" files="12" classes="12"/>
+    <package name="domain.checkout.entity">
+      <metrics statements="34" coveredstatements="28" conditionals="4" coveredconditionals="0" methods="16" coveredmethods="15"/>
+      <file name="order.ts" path="C:\Users\jonas\Desktop\fc-ddd-patterns\src\domain\checkout\entity\order.ts">
+        <metrics statements="21" coveredstatements="15" conditionals="4" coveredconditionals="0" methods="9" coveredmethods="8"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="35" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="38" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="41" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="45" count="3" type="cond" truecount="0" falsecount="1"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="53" count="12" type="stmt"/>
+      </file>
+      <file name="order_item.ts" path="C:\Users\jonas\Desktop\fc-ddd-patterns\src\domain\checkout\entity\order_item.ts">
+        <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="25" count="6" type="stmt"/>
+        <line num="29" count="6" type="stmt"/>
+        <line num="33" count="6" type="stmt"/>
+        <line num="37" count="9" type="stmt"/>
+        <line num="41" count="6" type="stmt"/>
+        <line num="45" count="15" type="stmt"/>
+      </file>
+    </package>
+    <package name="domain.customer.entity">
+      <metrics statements="25" coveredstatements="15" conditionals="3" coveredconditionals="0" methods="13" coveredmethods="8"/>
+      <file name="customer.ts" path="C:\Users\jonas\Desktop\fc-ddd-patterns\src\domain\customer\entity\customer.ts">
+        <metrics statements="25" coveredstatements="15" conditionals="3" coveredconditionals="0" methods="13" coveredmethods="8"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="29" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="32" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="43" count="4" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="55" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="domain.customer.value-object">
+      <metrics statements="23" coveredstatements="18" conditionals="4" coveredconditionals="0" methods="7" coveredmethods="6"/>
+      <file name="address.ts" path="C:\Users\jonas\Desktop\fc-ddd-patterns\src\domain\customer\value-object\address.ts">
+        <metrics statements="23" coveredstatements="18" conditionals="4" coveredconditionals="0" methods="7" coveredmethods="6"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="33" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="36" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="39" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="42" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="domain.product.entity">
+      <metrics statements="19" coveredstatements="12" conditionals="3" coveredconditionals="0" methods="7" coveredmethods="5"/>
+      <file name="product.ts" path="C:\Users\jonas\Desktop\fc-ddd-patterns\src\domain\product\entity\product.ts">
+        <metrics statements="19" coveredstatements="12" conditionals="3" coveredconditionals="0" methods="7" coveredmethods="5"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="16" count="6" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="24" count="6" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="38" count="3" type="cond" truecount="0" falsecount="1"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="41" count="3" type="cond" truecount="0" falsecount="1"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="44" count="3" type="cond" truecount="0" falsecount="1"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="47" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="infrastructure.customer.repository.sequelize">
+      <metrics statements="25" coveredstatements="7" conditionals="1" coveredconditionals="0" methods="5" coveredmethods="1"/>
+      <file name="customer.model.ts" path="C:\Users\jonas\Desktop\fc-ddd-patterns\src\infrastructure\customer\repository\sequelize\customer.model.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="12" count="9" type="stmt"/>
+      </file>
+      <file name="customer.repository.ts" path="C:\Users\jonas\Desktop\fc-ddd-patterns\src\infrastructure\customer\repository\sequelize\customer.repository.ts">
+        <metrics statements="23" coveredstatements="5" conditionals="1" coveredconditionals="0" methods="5" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="76" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="infrastructure.order.repository.sequilize">
+      <metrics statements="38" coveredstatements="24" conditionals="6" coveredconditionals="3" methods="16" coveredmethods="11"/>
+      <file name="order-item.model.ts" path="C:\Users\jonas\Desktop\fc-ddd-patterns\src\infrastructure\order\repository\sequilize\order-item.model.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="17" count="6" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+      </file>
+      <file name="order.model.ts" path="C:\Users\jonas\Desktop\fc-ddd-patterns\src\infrastructure\order\repository\sequilize\order.model.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="17" count="11" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+      </file>
+      <file name="order.repository.ts" path="C:\Users\jonas\Desktop\fc-ddd-patterns\src\infrastructure\order\repository\sequilize\order.repository.ts">
+        <metrics statements="23" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="4"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="47" count="3" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="84" count="0" type="stmt"/>
+        <line num="86" count="0" type="stmt"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="93" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="infrastructure.product.repository.sequelize">
+      <metrics statements="12" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="1"/>
+      <file name="product.model.ts" path="C:\Users\jonas\Desktop\fc-ddd-patterns\src\infrastructure\product\repository\sequelize\product.model.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="7" count="14" type="stmt"/>
+      </file>
+      <file name="product.repository.ts" path="C:\Users\jonas\Desktop\fc-ddd-patterns\src\infrastructure\product\repository\sequelize\product.repository.ts">
+        <metrics statements="10" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

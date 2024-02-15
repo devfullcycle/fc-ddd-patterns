@@ -36,6 +36,15 @@ describe("Order repository test", () => {
     await sequelize.close();
   });
 
+  function getCustomerWithAddress() {
+    const customer = new Customer("123", "John Doe");
+		const address = new Address("Wilkie Way", 4290, "94306", "Palo Alto, CA");
+		customer.changeAddress(address);
+		
+		return customer;
+  }
+  
+
   it("should create a new order", async () => {
     const customerRepository = new CustomerRepository();
     const customer = new Customer("123", "Customer 1");
@@ -81,4 +90,41 @@ describe("Order repository test", () => {
       ],
     });
   });
+
+  it("Should update items and the total orders", async () => {
+    const customerRepository = new CustomerRepository();
+		const productRepository = new ProductRepository();
+		const orderRepository = new OrderRepository();
+
+    const customer = getCustomerWithAddress();
+		await customerRepository.create(customer);
+
+    const product1 = new Product("23", "Shoes", 259.99);
+		const product2 = new Product("24", "Shirt", 89.99);
+		const product3 = new Product("25", "Pack of socks", 19.99);
+
+    await productRepository.create(product1);
+		await productRepository.create(product2);
+		await productRepository.create(product3);
+
+    const orderItem1 = new OrderItem("247", "Order Item 1", product1.price, product1.id, 1);
+		const orderItem2 = new OrderItem("248", "Order Item 2", product2.price, product2.id, 2);
+    const orderItem3 = new OrderItem("249", "Order Item 3", product3.price, product3.id, 1);
+
+    const order = new Order("329", customer.id, [orderItem1, orderItem2, orderItem3]);
+
+    await orderRepository.create(order);
+
+    await orderRepository.update(order);
+
+    const orderFromDB = await OrderModel.findOne({
+			where: { id: order.id },
+			include: ["items"],
+		});
+
+    expect(orderFromDB?.items.length).toBe(3);
+		expect(orderFromDB?.total).toBe(order.total());
+
+  });
 });
+
