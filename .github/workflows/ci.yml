@@ -1,5 +1,7 @@
 name: ci-fc-challenge
-on: [push]
+on: 
+  pull-request:
+    - master
 jobs:
   check-application:
     runs-on: ubuntu-latest
