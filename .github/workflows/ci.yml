@@ -1,7 +1,7 @@
 name: ci-fc-challenge
 on: [push]
 jobs:
-  build:
+  check-application:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
