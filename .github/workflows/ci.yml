@@ -1,8 +1,5 @@
 name: ci-fc-challenge
-on: 
-  pull_request:
-    branches:
-      - master
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
