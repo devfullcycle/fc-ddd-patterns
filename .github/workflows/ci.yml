@@ -1,0 +1,23 @@
+name: ci-fc-challenge
+on: 
+  pull_request:
+    branches:
+      - master
+strategy:
+  matrix:
+    node-version: ['14.x', '16.x', '18.x']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      - rum: npm install
+      - run: npm run build
+      - run: npm test
+
+    
