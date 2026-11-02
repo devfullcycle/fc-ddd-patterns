@@ -81,4 +81,143 @@ describe("Order repository test", () => {
       ],
     });
   });
+  
+  it("should update an order", async () => {
+    const customerRepository = new CustomerRepository();
+    const customer = new Customer("123", "Customer 1");
+    const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
+    customer.changeAddress(address);
+    await customerRepository.create(customer);
+
+    const productRepository = new ProductRepository();
+    const product = new Product("123", "Product 1", 10);
+    await productRepository.create(product);
+
+    const orderItem = new OrderItem(
+      "1",
+      product.name,
+      product.price,
+      product.id,
+      2
+    );
+
+    const order = new Order("1", "123", [orderItem]);
+    const orderRepository = new OrderRepository();
+
+    await orderRepository.create(order);
+
+    const orderItem2 = new OrderItem(
+      "1",
+      product.name,
+      product.price,
+      product.id,
+      3
+    );
+    const orderUpdate = new Order("1", "123", [orderItem2]);
+
+    await orderRepository.update(orderUpdate);
+
+    const orderModel = await OrderModel.findOne({ where: { id: "1" }, include: ["items"] });
+
+    expect(orderModel.toJSON()).toStrictEqual({
+      id: "1",
+      // name: "Order 1",
+      // price: 100,
+      customer_id: "123",
+      items: [{
+        id: "1",
+        name: product.name,
+        order_id: "1",
+        price: product.price,
+        product_id: product.id,
+        quantity: 2
+      }],
+      total: 20 
+    });
+
+    // product.changeName("Product 2");
+    // product.changePrice(200);
+
+    await orderRepository.update(order);
+
+    const orderModel2 = await OrderModel.findOne({ where: { id: "1" } });
+
+    expect(orderModel2.toJSON()).toStrictEqual({
+      customer_id: "123",
+      id: "1",
+      // name: "Order 2",
+      // items: [],
+      total: 20
+    });
+  });
+
+  it("should find an order", async () => {
+    const customerRepository = new CustomerRepository();
+    const customer = new Customer("123", "Customer 1");
+    const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
+    customer.changeAddress(address);
+    await customerRepository.create(customer);
+
+    const productRepository = new ProductRepository();
+    const product = new Product("123", "Product 1", 10);
+    await productRepository.create(product);
+
+    const orderItem = new OrderItem(
+      "1",
+      product.name,
+      product.price,
+      product.id,
+      2
+    );
+
+    const orderRepository = new OrderRepository();
+    const order = new Order("1", customer.id, [orderItem]);
+    await orderRepository.create(order);
+
+    const orderModel = await OrderModel.findOne({ where: { id: "1" } });
+
+    const foundOrder = await orderRepository.find("1");
+
+    expect(orderModel.toJSON()).toStrictEqual({
+      id: foundOrder.id,
+      customer_id: foundOrder.customerId,
+      total: foundOrder.total()
+      // items: foundOrder.items.map((item) => {
+        // id: item.id,
+        // name: item.name,
+        // price: item.price,
+        // product_id: item.productId,
+        // quantity: item.quantity
+    });
+  });
+
+  it("should find all orders", async () => {
+    const customerRepository = new CustomerRepository();
+    const customer = new Customer("123", "Customer 1");
+    const address = new Address("Street 1", 1, "Zipcode 1", "City 1");
+    customer.changeAddress(address);
+    await customerRepository.create(customer);
+
+    const productRepository = new ProductRepository();
+    const product = new Product("123", "Product 1", 10);
+    await productRepository.create(product);
+
+    const orderItem = new OrderItem(
+      "1",
+      product.name,
+      product.price,
+      product.id,
+      2
+    );
+
+    const orderRepository = new OrderRepository();
+    const order = new Order("1", customer.id, [orderItem]);
+    await orderRepository.create(order);
+
+    const foundOrders = await orderRepository.findAll();
+
+    const orders = [order];
+
+    expect(orders).toEqual(foundOrders);    
+  });
 });
