@@ -1,5 +1,6 @@
 import Address from "../value-object/address";
 import Customer from "./customer";
+import { EnviaConsoleLogHandler, EnviaConsoleLog1Handler, EnviaConsoleLog2Handler } from "./customer-handlers";
 
 describe("Customer unit tests", () => {
   it("should throw error when id is empty", () => {
@@ -23,6 +24,42 @@ describe("Customer unit tests", () => {
 
     // Assert
     expect(customer.name).toBe("Jane");
+  });
+
+  it("should create an event", () => {
+    // Arrange
+    const handle1Spy = jest.spyOn(EnviaConsoleLog1Handler, "handle");
+    const handle2Spy = jest.spyOn(EnviaConsoleLog2Handler, "handle");
+
+    // Act
+    const customer = new Customer("123", "John");
+
+    // Assert
+    expect(customer.id).toBe("123");
+    expect(customer.name).toBe("John");
+    expect(handle1Spy).toHaveBeenCalledTimes(1);
+    expect(handle2Spy).toHaveBeenCalledTimes(1);
+    handle1Spy.mockRestore();
+    handle2Spy.mockRestore();
+  });
+
+  it("should change address", () => {
+    // Arrange
+    const customer = new Customer("123", "John");
+    const handleSpy = jest.spyOn(EnviaConsoleLogHandler, "handle");
+
+    // Act
+    const address = new Address("Street 1", 123, "13330-250", "São Paulo");
+    customer.changeAddress(address);
+
+    // Assert
+    expect(customer.Address.street).toBe("Street 1");
+    expect(customer.Address.number).toBe(123);
+    expect(customer.Address.zip).toBe("13330-250");
+    expect(customer.Address.city).toBe("São Paulo");
+
+    expect(handleSpy).toHaveBeenCalledTimes(1);
+    handleSpy.mockRestore();
   });
 
   it("should activate customer", () => {
@@ -60,4 +97,5 @@ describe("Customer unit tests", () => {
     customer.addRewardPoints(10);
     expect(customer.rewardPoints).toBe(20);
   });
+
 });

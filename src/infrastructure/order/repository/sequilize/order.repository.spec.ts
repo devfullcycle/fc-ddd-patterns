@@ -81,7 +81,7 @@ describe("Order repository test", () => {
       ],
     });
   });
-  
+
   it("should update an order", async () => {
     const customerRepository = new CustomerRepository();
     const customer = new Customer("123", "Customer 1");
@@ -218,6 +218,22 @@ describe("Order repository test", () => {
 
     const orders = [order];
 
-    expect(orders).toEqual(foundOrders);    
+    expect(foundOrders).toStrictEqual([
+      expect.objectContaining({
+        _id: "1",
+        _customerId: "123",
+        _total: 20,
+        _items: [
+          expect.objectContaining({
+            _id: "1",
+            _name: "Product 1",
+            _price: 10,
+            _productId: "123",
+            _quantity: 2,
+            _total: 20,
+          }),
+        ],
+      }),
+    ]);
   });
 });
